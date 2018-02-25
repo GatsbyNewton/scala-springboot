@@ -1,14 +1,12 @@
 package edu.wzm.repository
 
+import java.util.{List => JList}
+
 import edu.wzm.entity.City
-import org.springframework.data.domain.{Page, Pageable, Sort}
 import org.springframework.data.jpa.repository.{JpaRepository, JpaSpecificationExecutor, Modifying, Query}
-import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
-
-import scala.collection.mutable.ListBuffer
 
 /**
   * Created by gatsbynewton on 2017/10/21.
@@ -23,7 +21,7 @@ trait CityRepository extends JpaRepository[City, java.lang.Long] with JpaSpecifi
 
     @Query("SELECT c.id, c.country, c.name, c.state, c.map " +
             " FROM City c")
-    def selectAll(): ListBuffer[City]
+    def selectAll(): JList[City]  /* // 隐式转换，直接用scala的List会报错: javax.persistence.NonUniqueResultException: result returns more than one elements] with root cause */
 
     @Query("SELECT c.id, c.country, c.name, c.state, c.map " +
             " FROM City c " +

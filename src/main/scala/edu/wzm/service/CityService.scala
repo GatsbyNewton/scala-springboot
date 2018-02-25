@@ -1,13 +1,11 @@
 package edu.wzm.service
 
-import java.util.{ArrayList => JList}
-import javax.persistence.criteria.{CriteriaBuilder, CriteriaQuery, Predicate, Root}
+import java.util.{ArrayList, List => JList}
 
 import edu.wzm.entity.City
 import edu.wzm.repository.CityRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.{Page, Pageable}
-import org.springframework.data.jpa.domain.Specification
 import org.springframework.stereotype.Service
 
 /**
@@ -22,7 +20,7 @@ class CityService {
     def selectById(id: Int): City = cityRepository.selectById(id)
 
     def save(city: City): Unit = {
-        val cities = new JList[City]()
+        val cities = new ArrayList[City]()
         cityRepository.save(cities)
     }
 
@@ -37,6 +35,7 @@ class CityService {
         null
     }
 
+    def selectAll(): JList[City] = cityRepository.selectAll()
 
     def findAll(pageable: Pageable): Page[City] = cityRepository.findAll(pageable)
 }

@@ -20,6 +20,9 @@ class CityController {
     @RequestMapping(value = Array("/one"), produces = Array("application/json;charset=UTF-8"))
     def selectById(@RequestParam("id") id: Int): String = cityService.selectById(id).toString
 
+    @RequestMapping(value = Array("/all"), produces = Array("application/json;charset=UTF-8"))
+    def selectAll(): AnyRef = cityService.selectAll()
+
     @RequestMapping(value = Array("/page"), produces = Array("application/json;charset=UTF-8"))
     def findWithDefaultValue(@PageableDefault(value = 1, size = 1, sort = Array("id"),
         direction = Sort.Direction.DESC) pageable: Pageable): Page[City] = {

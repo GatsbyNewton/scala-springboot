@@ -8,25 +8,25 @@ import scala.beans.BeanProperty
   * Created by gatsbynewton on 2017/10/21.
   */
 @Entity
-@Table(name = "person")
-class Person {
+@Table(name = "customer")
+class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @BeanProperty
-    var id: Long = _
+    var id: Int = _
 
     @BeanProperty
-    @Column(name = "name", nullable = true)
+    @Column(name = "name")
     var name: String = _
 
     @BeanProperty
-    @Column(name = "age")
-    var age: Int = _
+    @Column(name = "cost", nullable = true)
+    var cost: Float = _
 
     @BeanProperty
-    @Column(name = "phone")
-    var phone: String = _
+    @Column(name = "product")
+    var product: String = _
 
-    override def toString: String = s"Person(id=$id, name=$name, age=$age, phone=$phone)"
+    override def toString = s"Customer($id, $name, $cost, $product)"
 }

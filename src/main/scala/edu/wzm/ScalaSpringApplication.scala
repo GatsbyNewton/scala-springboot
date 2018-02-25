@@ -9,10 +9,10 @@ import org.springframework.context.annotation.ComponentScan
  *
  */
 @ComponentScan
-//@EnableAutoConfiguration
+@EnableAutoConfiguration
 @SpringBootApplication
 class Config
 
-object App extends App {
+object ScalaSpringApplication extends App {
     SpringApplication.run(classOf[Config])
 }
